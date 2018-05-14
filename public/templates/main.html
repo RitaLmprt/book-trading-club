@@ -1,0 +1,94 @@
+
+<div class="container">
+    <nav class="navbar navbar-default navbar inverse">
+        <div class='btn-toolbar pull-right'>
+            <a href="/profile" ng-if="vm.user&&!vm.error" id="signin" class="btn btn-default navbar-btn" role="button">Profile</a>
+           <a href="/books" ng-if="vm.user&&!vm.error" id="signin" class="btn btn-default navbar-btn" role="button">All Books</a>
+            <button type="button" ng-if="vm.user&&!vm.error" id="signin" class="btn btn-default navbar-btn"  ng-click="vm.logout();" >Logout</button>
+            <button type="button" ng-if="!vm.user" id="signin" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#log-in-modal">Login</button>
+         <button type="button"  ng-if="!vm.user" id="signin" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#sign-in-modal">Signup</button>
+          <button type="button" ng-if="vm.error" id="signin" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#log-in-modal">Login</button>
+         <button type="button"  ng-if="vm.error" id="signin" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#sign-in-modal">Signup</button>
+     </div>
+</nav>
+
+<h1 class="mainHeading">Book Trading Club</h1>
+<h4 id="errorWarning" ng-if="vm.error">Wrong user/password.Please try again</h4>
+<div class='col-xs-12'>
+    <h2 id="welcome" ng-if="vm.user&&!vm.error">Welcome, {{vm.user.name}}</h3>
+    <img class='img-responsive' src='images/image.jpg' alt='book-shelf'>
+</div>
+   
+
+
+<!-- Modal -->
+    
+
+    <div class="modal fade" id="sign-in-modal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title text-center">Signup</h3>
+                </div>
+                <div class="modal-body"> 
+                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                     <div class="panel panel-default">
+                         <div class="panel-heading" role="tab" id="signupHeading">
+                             <h4 class="panel-title text-center"><a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#signup" aria-expanded="true" 
+                             aria-controls="collapseOne">Signup</a></h4>
+                         </div>
+                          <div id="signup" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="signupHeading">
+                              <div class="panel-body">
+                                    <input type="text" class="form-control" placeholder="Name" ng-model="vm.user.name">
+                                    <br>
+                                    <input type="password" class="form-control" placeholder="Password" ng-model="vm.user.password">
+                                    <br>
+                                    <button ng-click="vm.register()" ng-disabled="!vm.user.password || !vm.user.name" class="btn btn-success" data-dismiss="modal" >Submit</button>
+                              </div>
+                            </div>
+                     </div>
+                 </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="log-in-modal" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title text-center">Login</h3>
+            </div>
+           
+            <div class="modal-body"> 
+                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                     <div class="panel panel-default">
+                         <div class="panel-heading" role="tab" id="loginHeading">
+                             <h4 class="panel-title text-center"><a role="button" data-toggle="collapse" data-parent="#accordion" data-target="#login" aria-expanded="true" 
+                             aria-controls="collapseOne">Login</a></h4>
+                         </div>
+                         
+                          <div id="login" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="loginHeading">
+                              <div class="panel-body">
+                                <input type="text" class="form-control" placeholder="Name" ng-model="vm.user.name">
+                                <br>
+                                <input type="password" class="form-control" placeholder="Password" ng-model="vm.user.password">
+                                <br>
+                                <button ng-click="vm.login()" ng-disabled="!vm.user.password || !vm.user.name" class="btn btn-success"data-dismiss="modal">Submit</button>
+                              </div>
+                            </div>
+                     </div>
+                    
+                 </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+    
+     
+</div>
+ 
+    <!-- Modal content-->
+    
+   

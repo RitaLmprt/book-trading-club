@@ -1,0 +1,76 @@
+<head>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+</head>
+<nav class="navbar navbar-default navbar inverse" >
+        <div class='btn-toolbar pull-right'>
+           <a href="/books" id="signin" class="btn btn-default navbar-btn" role="button">All Books</a>
+         <button type="button" id="signin" class="btn btn-default navbar-btn"  ng-click="vm.logout();" >Logout</button>
+     </div>
+</nav>
+<h3 id="profileHeading">Your Profile</h3>
+<h4  id="profileHeading">Welcome, {{vm.currentUser.name}}</h4>
+<br>
+ <button type="button" id="update" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#update-modal">Update your information</button>
+<hr>
+ <div class="modal fade" id="update-modal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h3 class="modal-title text-center">Update your information</h3>
+                </div>
+                <div class="modal-body"> 
+                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                     <div class="panel panel-default">
+      
+                          <div id="signup" class="panel-collapse collapse in" role="tabpanel">
+                              <div class="panel-body">
+                                   <label for="">Your name</label>
+                                   <input type="text" style="width:200px;" ng-model="vm.currentUser.name" class="form-control" >
+								   <br>
+									<label for="">Your city</label>
+									<input type="text" style="width:200px;" ng-model="vm.currentUser.city" class="form-control" >
+									<br>
+									<label for="">Your state</label>
+									<input type="text" style="width:200px;" ng-model="vm.currentUser.state" class="form-control">
+									<br>
+									<button id="update" style="width:200px;" ng-click="vm.updateLocation()" class="btn btn-success" data-dismiss="modal">Update</button>
+                              </div>
+                            </div>
+                     </div>
+                 </div>  
+            </div>
+        </div>
+    </div>
+    </div>
+
+<span ng-if="vm.message">{{vm.message}}</span>
+<hr>
+
+<div id="borrowing"><h3 id="borrowTitle">Books you have borrowed</h3>
+
+<ul>
+	<li ng-repeat="borrow in vm.borrow">
+		{{borrow}}</li>
+</ul>
+</div>
+<hr>
+<div id="borrowing"><h3 id="borrowTitle">Books you own</h3>
+<ul>
+    <li ng-repeat="book in vm.books">
+        <a id="title" href="/books/{{book._id}}">{{book.title}}</a> 
+        <button ng-if="book.requests.status == 0" ng-click="vm.removeBook(book._id)" class="btn btn-warning">Delete</button>
+        <div id="status" ng-if="book.requests.status === 0">not requested</div>
+	    <div id="status" ng-if="book.requests.status === 1">requested by {{book.requests.borrower.name}}
+	    </div>
+	    <div id="status" ng-if="book.requests.status === 2">Checked out to {{book.requests.borrower.name}}
+	    </div>
+	    <button ng-if="book.requests.status === 2" ng-click="vm.returnTrade(book)" onClick="history.go(0)" class="btn btn-success">Return</button>
+		<button ng-if="book.requests.status === 1" ng-click="vm.acceptTrade(book)" onClick="history.go(0)" class="btn btn-success">Accept</button>
+		<button ng-if="book.requests.status === 1" ng-click="vm.rejectTrade(book)" onClick="history.go(0)" class="btn btn-danger">Reject</button>
+	    <h4 ng-if="vm.message">You answer has been accepted.</h4>
+    </li>
+</ul>
+</div>
+

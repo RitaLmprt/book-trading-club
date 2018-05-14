@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar inverse">
+        <div class='btn-toolbar pull-right'>
+           <a href="/profile" id="signin" class="btn bt-primary navbar-btn" role="button">Profile</a>
+           <a href="/books" id="signin" class="btn bt-primary navbar-btn" role="button">All Books</a>
+         <button type="button" id="signin" class="btn btn-primary navbar-btn"  ng-click="vm.logout();" >Logout</button>
+     </div>
+</nav>
+<h3  id="profileHeading">Book details</h3>
+
+
+<h5 id="books">Title: {{vm.book.title}}</h5>
+<hr>
+<h5 id="books">Description: <p id="description">{{vm.book.description}}</p></h5>
+<hr>
+<h5 id="books">Belongs to: <p id="description">{{vm.book.owner.name}}</p></h5>
+<hr>
+<img src="" alt="" ng-src="{{vm.book.cover}}" class="img-responsive">
+
+<hr>
+<button class="btn btn-success" ng-disabled="vm.message" ng-if="vm.book.requests.status<1 && !vm.isOwner(vm.book)"  ng-click="vm.request(vm.book)" onClick="history.go(0)">Request to borrow</button>
+<h4 ng-if="vm.error">{{vm.error.data}}</h4>
+<h4 ng-if="vm.message">Your request has been accepted.</h4>
+<hr>
+<input type="text" class="form-control" ng-model="vm.comment">
+<br>
+<button class="btn btn-success" ng-click="vm.addComment()" ng-disabled="!vm.comment">Comment</button>
+<br>
+
+<h3 id="books">Comments</h3>
+<ul>
+    <li ng-repeat="comment in vm.book.comments">
+        {{comment.comment }} -- {{comment.user}} -- {{comment.createdAt | date: 'medium'}} -- {{ comment.stars }}
+    </li>
+</ul>

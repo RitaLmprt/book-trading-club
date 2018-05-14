@@ -1,0 +1,109 @@
+body{ 
+   height:100%;
+   background-image: url("../images/background.jpg"); 
+  background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200%;
+    animation: none !important;
+   -webkit-animation: none !important;
+}
+ #signin, #update{
+    padding: 10px;
+    border-radius: 10px;
+    color: rgba(255,255,255,1);
+   
+   
+ }
+ 
+ #update{
+   width: 100%;
+   background-color: #00eeff;
+ }
+ .mainHeading{
+   color: black;
+   text-align: center;
+    font-family: 'Tangerine', serif;
+  font-size: 90px;
+ }
+ #errorWarning{
+   color:black;
+    text-align: center;
+   font-size: 24px;
+   
+ }
+ #title{
+     display: inline;
+ }
+#status{
+    display: inline; 
+}
+#welcome{
+   color: black;
+  text-align: center;
+  font-family: 'Tangerine', serif;
+  font-size: 48px;
+ 
+ }
+ #borrowing{
+   color: black;
+  text-align: left;
+  font-family: 'Tangerine', serif;
+  font-size: 36px;
+  display: inline-block;
+ }
+ #borrowTitle{
+   color: black;
+  text-align: center;
+  font-family: 'Tangerine', serif;
+  font-size: 48px;
+ }
+
+ #books{
+   color: black;
+  font-family: 'Tangerine', serif;
+  font-size: 48px;
+ }
+ #description{
+    color: black;
+  font-family: 'Tangerine', serif;
+  font-size: 24px;
+ }
+#profileHeading{
+  color: black;
+  text-align: center;
+  font-family: 'Tangerine', serif;
+  font-size: 56px;}
+  
+  .navbar-default{
+    background-color: #eee;
+    opacity:0.2;
+    
+  }
+.navbar-inverse .navbar-nav > li {
+  text-align: center;}
+
+.media, .jumbotron, .thumbnail {
+  background-color: rgba(235, 229, 217, 0.65);
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 17px -1px rgba(0, 0, 0, 0.36);
+  -moz-box-shadow: 0px 0px 17px -1px rgba(0, 0, 0, 0.36);
+  box-shadow: 0px 0px 17px -1px rgba(0, 0, 0, 0.36); }
+
+.media {
+  padding: 5px; }
+
+.media-object.img-thumbnail.mybooks-profile-img {
+  max-width: 100px; }
+
+@media (max-width: 400px) {
+  .btn-group-justified > .btn-group .btn {
+    font-size: 0.85rem; } }
+
+.thumbnail {
+  max-width: 400px; }
+
+.modal-content {
+  background-color: #b2a078;
+  color: white; }
+  
+  

@@ -1,0 +1,25 @@
+<nav class="navbar navbar-default navbar inverse">
+        <div class='btn-toolbar pull-right'>
+           <a href="/profile" id="signin" class="btn btn-default navbar-btn" role="button">Profile</a>
+         <button type="button" id="signin" class="btn btn-default navbar-btn"  ng-click="vm.logout();" >Logout</button>
+     </div>
+</nav>
+<h3  id="profileHeading">Books Catalog</h3>
+
+ 
+<h3 ng-if="vm.loading === true">Adding your book to our database...</h3>
+    <div ng-hide="vm.loading === true">
+        
+        <h4 id="books">{{vm.error}}</h4>
+        <h3 id="books">Add your book here</h3>
+        <input type="text" ng-model="vm.book.title" class="form-control" placeholder="Book title">
+        <br>
+        <button id="update" class="btn btn-primary" ng-click="vm.addBook();" ng-disabled="!vm.book.title">Add A Book</button>
+        <hr> 
+    <h4 id="books">Available books</h4>
+    <ul>
+        <li ng-repeat="book in vm.books" ng-if="book.requests.status===0">
+            <a href="/books/{{book._id}}" >{{book.title}}</a>
+        </li>
+    </ul>
+</div>
